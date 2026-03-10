@@ -16,18 +16,15 @@ class Aeroplane:
         self.velocity = velocity
         self.geo_altitude = self.__validate_geo_altitude(geo_altitude)
         self.true_track = true_track
-        # Aeroplane.list_planes.append([self.icao24, self.origin_country, self.velocity, self.geo_altitude, self.true_track])
-
 
     @staticmethod
-    def __validate_geo_altitude(geo_altitude):
+    def __validate_geo_altitude(geo_altitude: float) -> float:
         """Приватный метод валидации высоты полета"""
         if geo_altitude < 0:
             geo_altitude = 0
         return geo_altitude
 
-
-    def __str__(self):
+    def __str__(self) -> str:
         return (
             f"Уникальный идентификатор борта: {self.icao24}. "
             f"Страна регистрации: {self.origin_country}. "
@@ -35,7 +32,6 @@ class Aeroplane:
             f"Высота полета: {self.geo_altitude}. "
             f"Курс: {self.true_track}."
         )
-
 
     def __eq__(self, other: object) -> bool:
         """Проверка на равенство по высоте полета"""
@@ -71,8 +67,6 @@ class Aeroplane:
         if not isinstance(other, Aeroplane):
             return NotImplemented
         return self.geo_altitude >= other.geo_altitude
-
-
 
     def to_list(self) -> list:
         """Возвращает список данных о самолетах"""

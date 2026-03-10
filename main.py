@@ -1,8 +1,8 @@
-from src.filemanager import JSONAeroplane
 from src.api_client import ApiClientPlanes
+from src.filemanager import JSONAeroplane
 
 
-def main():
+def main() -> None:
     """Функция - консольный интерфейс"""
 
     print("Программа получения данных о самолетах выбранной страны")
@@ -10,7 +10,7 @@ def main():
     if fail_name == "":
         fail_name = "data/aeroplane.json"
     else:
-        fail_name = "data/"+ fail_name + ".json"
+        fail_name = "data/" + fail_name + ".json"
     api_search = ApiClientPlanes()
     print("Выберете действие:")
     print("1 - загрузка из файла.")
@@ -23,12 +23,12 @@ def main():
             break
         elif choice == "2":
             country_search = input("Введите название страны\n")
-            data_load = api_search.get_aeroplanes(country_search) # список данных о самолетах
+            data_load = api_search.get_aeroplanes(country_search)  # список данных о самолетах
             break
         else:
             print("Неверный ввод (ввести 1 или 2")
 
-    list_plains = api_search.convert_to_aeroplanes(data_load) # список экземпляров Aeroplane
+    list_plains = api_search.convert_to_aeroplanes(data_load)  # список экземпляров Aeroplane
     for plan in list_plains:
         print(plan)
     print(f"Найдено самолетов - {len(data_load)}.")
@@ -77,22 +77,5 @@ def main():
             print("Неверный ввод (ввести число от 1 до 5)")
 
 
-
-
-
 if __name__ == "__main__":
     main()
-    # api = ApiClientPlanes()
-    # api.get_aeroplanes("Indonesia")
-    # print(api.country)
-    # print(api.aeroplanes)
-    # planes = api.aeroplanes
-    # all_planes = []
-    # for plan in planes:
-    #     p = Aeroplane(icao24=plan[0], origin_country=plan[2], velocity=plan[9], geo_altitude=plan[10], true_track=plan[13],)
-    #     all_planes.append(p)
-    # print(all_planes)
-
-
-
-

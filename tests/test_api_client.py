@@ -1,8 +1,5 @@
-from unittest.mock import MagicMock, Mock, patch
-
+from unittest.mock import patch
 import pytest
-import requests
-
 from src.api_client import ApiClientPlanes
 from src.plane_class import Aeroplane
 
